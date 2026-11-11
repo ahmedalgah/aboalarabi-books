@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -8,172 +9,325 @@
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f5f6fa;color:#253247;font-family:Tahoma,Arial,sans-serif}
-header{background:#102746;color:white;padding:17px 5%;position:sticky;top:0;z-index:10}
+header{background:#102746;color:white;padding:15px 5%;position:sticky;top:0;z-index:10}
 .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:22px;font-weight:bold}
-.logo span{color:#e8b64e}
-button,input{font:inherit}
-button{cursor:pointer}
+.logo{font-size:22px;font-weight:bold}.logo span{color:#e8b64e}
+button,input{font:inherit}button{cursor:pointer}
 .cart{background:#e8b64e;border:0;border-radius:8px;padding:10px 15px;font-weight:bold;color:#102746}
-.hero{background:linear-gradient(120deg,#102746,#24578a);color:white;padding:55px 6%}
+.hero{background:linear-gradient(120deg,#102746,#24578a);color:white;padding:50px 6%}
 .hero-inner{max-width:1150px;margin:auto}
-.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.5;margin:0}
+.hero h1{font-size:clamp(28px,5vw,46px);line-height:1.5;margin:0}
 .hero h1 span{color:#f0bd50}
 .hero p{line-height:2;color:#e0e8f2}
 .hero button{background:#e8b64e;border:0;padding:13px 25px;border-radius:8px;font-weight:bold}
-.container{max-width:1200px;margin:auto;padding:35px 5%}
-.heading{font-size:24px;color:#102746;margin:0 0 20px}
+.container{max-width:1200px;margin:auto;padding:32px 5%}
+.heading{font-size:24px;color:#102746;margin:0 0 18px}
 .heading span{color:#c28d2d}
-.categories{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
-.cat{border:1px solid #d9e0e9;background:white;padding:9px 16px;border-radius:30px;color:#102746}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+.stat{background:white;border:1px solid #e5eaf0;border-radius:8px;padding:9px 13px;font-size:13px}
+.categories{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.cat{border:1px solid #d9e0e9;background:white;padding:9px 14px;border-radius:30px;color:#102746;font-size:13px}
 .cat.active,.cat:hover{background:#102746;color:white}
-.search input{width:100%;padding:14px;border:1px solid #dce2eb;border-radius:9px;margin-bottom:22px}
-.books{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.book{background:white;border:1px solid #e6eaf0;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #1027460c}
-.cover{height:190px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:white;background:linear-gradient(140deg,#163353,#3975a3)}
-.cover b{font-size:20px;line-height:1.7}
-.cover small{display:block;font-size:12px;font-weight:normal}
-.book-info{padding:13px}
-.book h3{font-size:15px;margin:0 0 8px;color:#102746}
-.author{font-size:12px;color:#b07b27}
-.desc{font-size:12px;color:#687589;line-height:1.8;min-height:42px}
-.price{font-weight:bold;color:#b07b27;margin:12px 0}
-.status{font-size:11px;color:#8a6728;background:#fff4d9;padding:6px;border-radius:5px;margin-bottom:9px}
-.add{width:100%;padding:10px;border:0;border-radius:7px;background:#194c7e;color:white;font-weight:bold}
-.add:disabled{background:#aeb8c5;cursor:not-allowed}
+.searchbar{display:flex;gap:10px;margin-bottom:18px}
+.searchbar input{flex:1;min-width:0;padding:14px;border:1px solid #dce2eb;border-radius:9px}
+.searchbar select{padding:10px;border:1px solid #dce2eb;border-radius:9px;background:white}
+.books{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.book{background:white;border:1px solid #e6eaf0;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #1027460c;display:flex;flex-direction:column}
+.cover{height:160px;display:flex;align-items:center;justify-content:center;text-align:center;padding:17px;color:white;background:linear-gradient(140deg,#163353,#3975a3)}
+.book:nth-child(3n) .cover{background:linear-gradient(140deg,#4d3332,#a45c48)}
+.cover b{font-size:17px;line-height:1.7}
+.cover small{display:block;font-size:11px;font-weight:normal;margin-top:6px}
+.book-info{padding:12px;display:flex;flex-direction:column;flex:1}
+.book h3{font-size:14px;margin:0 0 7px;color:#102746;line-height:1.7}
+.author{font-size:11px;color:#b07b27}
+.category-label{font-size:10px;color:#718096;margin-top:7px}
+.desc{font-size:11px;color:#687589;line-height:1.8;min-height:39px;margin:8px 0}
+.price{font-weight:bold;color:#b07b27;margin:8px 0 11px;font-size:14px}
+.add{width:100%;padding:10px;border:0;border-radius:7px;background:#194c7e;color:white;font-weight:bold;margin-top:auto}
 .bundles{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
-.bundle{padding:25px;color:white;border-radius:12px;background:linear-gradient(120deg,#263d62,#5179a4)}
+.bundle{padding:24px;color:white;border-radius:12px;background:linear-gradient(120deg,#263d62,#5179a4)}
 .bundle:nth-child(2){background:linear-gradient(120deg,#55302c,#a55b44)}
-.bundle h3{font-size:20px}
-footer{background:#102746;color:white;text-align:center;padding:30px;margin-top:35px}
+.bundle h3{font-size:20px}.bundle p{line-height:1.9}
+.bundle .add{background:#e8b64e;color:#102746;max-width:190px}
+footer{background:#102746;color:white;text-align:center;padding:28px;margin-top:35px}
 footer p{color:#cbd6e4;font-size:13px}
 .modal-bg{display:none;position:fixed;inset:0;background:#0009;z-index:30;align-items:center;justify-content:center;padding:15px}
-.modal{background:white;padding:22px;border-radius:13px;width:100%;max-width:480px;max-height:90vh;overflow:auto}
+.modal-bg.show{display:flex}
+.modal{background:white;padding:22px;border-radius:13px;width:100%;max-width:490px;max-height:90vh;overflow:auto}
 .close{float:left;border:0;background:#eee;padding:7px 12px;border-radius:5px}
-.cart-line{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #eee;font-size:13px}
-.remove{border:0;background:#ffe6e6;color:#a22;padding:5px;border-radius:5px}
+.cart-line{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #eee;font-size:13px}
+.remove{border:0;background:#ffe6e6;color:#a22;padding:6px 9px;border-radius:5px}
 .bank{background:#f0f4f8;padding:14px;border-radius:9px;line-height:2;margin:15px 0}
 .whatsapp{display:block;text-align:center;text-decoration:none;background:#20bd65;color:white;padding:13px;border-radius:8px;font-weight:bold}
-.empty{text-align:center;grid-column:1/-1;background:white;padding:30px;border-radius:10px}
-@media(max-width:850px){.books{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:580px){
- .books{grid-template-columns:repeat(2,1fr);gap:10px}
- .cover{height:155px}.cover b{font-size:16px}
- .bundles{grid-template-columns:1fr}
- .container{padding:25px 4%}
- .logo{font-size:17px}
+.empty{text-align:center;grid-column:1/-1;background:white;padding:30px;border-radius:10px;color:#687589}
+.note{font-size:12px;color:#66758a;line-height:1.8}
+@media(max-width:900px){.books{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){
+.books{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.cover{height:145px}.cover b{font-size:15px}
+.bundles{grid-template-columns:1fr}
+.container{padding:24px 4%}
+.logo{font-size:17px}
+.cart{padding:9px 11px;font-size:13px}
+.searchbar{flex-direction:column}
 }
 </style>
 </head>
 <body>
 
 <header>
- <div class="nav">
-  <div class="logo">📚 مكتبة <span>أبو العربي</span></div>
-  <button class="cart" onclick="openCart()">🛒 السلة (<span id="count">0</span>)</button>
- </div>
+<div class="nav">
+<div class="logo">📚 مكتبة <span>أبو العربي</span></div>
+<button class="cart" onclick="openCart()">🛒 السلة (<span id="count">0</span>)</button>
+</div>
 </header>
 
 <section class="hero">
- <div class="hero-inner">
-  <h1>اقرأ أكثر.. <span>اكتشف عالماً جديداً</span></h1>
-  <p>روايات وكتب وثقافة ومعرفة.. مكتبتك الرقمية في مكان واحد.</p>
-  <button onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">اكتشف الكتب ←</button>
- </div>
+<div class="hero-inner">
+<h1>اقرأ أكثر.. <span>اكتشف عالماً جديداً</span></h1>
+<p>روايات وكتب وثقافة ومعرفة.. مكتبتك الرقمية في مكان واحد.</p>
+<button onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">اكتشف الكتب ←</button>
+</div>
 </section>
 
 <main class="container">
- <section id="library">
-  <h2 class="heading">📚 تصفح <span>المكتبة</span></h2>
-  <div class="categories" id="categories"></div>
-  <div class="search">
-   <input id="search" placeholder="ابحث عن كتاب أو رواية أو مؤلف..." oninput="renderBooks()">
-  </div>
-  <div class="books" id="books"></div>
- </section>
+<section id="library">
+<h2 class="heading">📚 تصفح <span>المكتبة</span></h2>
+<div class="stats">
+<div class="stat">📖 عدد العناوين: <b>100</b></div>
+<div class="stat">🛍️ سعر الكتاب: <b>1,000 جنيه</b></div>
+</div>
+<div class="categories" id="categories"></div>
+<div class="searchbar">
+<input id="search" type="search" placeholder="ابحث عن كتاب أو رواية أو مؤلف..." oninput="renderBooks()">
+<select id="sort" onchange="renderBooks()">
+<option value="default">الترتيب الافتراضي</option>
+<option value="az">الاسم: أ - ي</option>
+<option value="za">الاسم: ي - أ</option>
+</select>
+</div>
+<div class="books" id="books"></div>
+</section>
 
- <section style="margin-top:45px">
-  <h2 class="heading">🎁 باقات <span>القراءة</span></h2>
-  <div class="bundles">
-   <div class="bundle">
-    <h3>🇸🇩 الأدب السوداني</h3>
-    <p>مجموعة من الأدب والروايات السودانية.</p>
-    <b>3,000 جنيه</b>
-   </div>
-   <div class="bundle">
-    <h3>👻 الغموض والتشويق</h3>
-    <p>رحلة في عالم الألغاز والأحداث المشوقة.</p>
-    <b>3,000 جنيه</b>
-   </div>
-  </div>
- </section>
+<section style="margin-top:45px">
+<h2 class="heading">🎁 باقات <span>القراءة</span></h2>
+<div class="bundles">
+<div class="bundle">
+<h3>🇸🇩 الأدب السوداني</h3>
+<p>مجموعة من الأدب والروايات السودانية.</p>
+<b>3,000 جنيه</b>
+<p><button class="add" onclick="addBundle('الأدب السوداني',3000)">🛒 شراء الباقة</button></p>
+</div>
+<div class="bundle">
+<h3>👻 الغموض والتشويق</h3>
+<p>رحلة في عالم الألغاز والأحداث المشوقة.</p>
+<b>3,000 جنيه</b>
+<p><button class="add" onclick="addBundle('الغموض والتشويق',3000)">🛒 شراء الباقة</button></p>
+</div>
+</div>
+</section>
 </main>
 
 <footer>
- <h2>📚 مكتبة أبو العربي</h2>
- <p>القراءة بداية كل حكاية جميلة</p>
- <p>© 2026 جميع الحقوق محفوظة</p>
+<h2>📚 مكتبة أبو العربي</h2>
+<p>القراءة بداية كل حكاية جميلة</p>
+<p>© 2026 جميع الحقوق محفوظة</p>
 </footer>
 
-<div class="modal-bg" id="modal">
- <div class="modal">
-  <button class="close" onclick="closeCart()">✕ إغلاق</button>
-  <h2>🛒 سلة مشترياتك</h2>
-  <div id="cartItems"></div>
-  <h3>الإجمالي: <span id="total">0</span> جنيه</h3>
-  <div class="bank">
-   <b>💳 التحويل عبر بنكك</b><br>
-   المستفيد: أحمد جاه الرسول<br>
-   رقم الحساب: 9883587<br>
-   <small>بعد التحويل أرسل الإيصال لتأكيد الطلب.</small>
-  </div>
-  <a id="send" class="whatsapp" href="#" target="_blank" rel="noopener">إرسال الطلب عبر واتساب</a>
- </div>
+<div class="modal-bg" id="modal" onclick="closeOnBackdrop(event)">
+<div class="modal">
+<button class="close" onclick="closeCart()">✕ إغلاق</button>
+<h2>🛒 سلة مشترياتك</h2>
+<div id="cartItems"></div>
+<h3>الإجمالي: <span id="total">0</span> جنيه</h3>
+<div class="bank">
+<b>💳 التحويل عبر بنكك</b><br>
+المستفيد: أحمد جاه الرسول<br>
+رقم الحساب: 9883587<br>
+<small>بعد التحويل أرسل إشعار التحويل عبر واتساب.</small>
+</div>
+<a id="send" class="whatsapp" href="#" target="_blank" rel="noopener">إرسال الطلب عبر واتساب</a>
+<p class="note">لا يتم تسليم روابط الكتب إلا بعد مراجعة التحويل يدوياً.</p>
+</div>
 </div>
 
 <script>
-const WHATSAPP = "249921234567"; // تم إضافة رقم الواتساب الخاص بك هنا
+const WHATSAPP="249111441216";
 
-const categories = [
- "الكل","روايات سودانية","روايات عربية",
- "روايات عالمية","غموض ورعب","تاريخ وثقافة",
- "كتب إسلامية","علوم ومعرفة"
+const BOOKS=[
+["موسم الهجرة إلى الشمال","الطيب صالح","روايات سودانية","رواية سودانية كلاسيكية عن الهوية والاغتراب."],
+["عرس الزين","الطيب صالح","روايات سودانية","حكاية اجتماعية من القرية السودانية."],
+["بندر شاه","الطيب صالح","روايات سودانية","عمل روائي من عالم الطيب صالح."],
+["ضو البيت","الطيب صالح","روايات سودانية","من أعمال الطيب صالح الروائية."],
+["مريود","الطيب صالح","روايات سودانية","رواية سودانية ذات أجواء تراثية."],
+["شوق الدرويش","حمور زيادة","روايات سودانية","رواية تاريخية تدور في السودان."],
+["الجنقو مسامير الأرض","عبد العزيز بركة ساكن","روايات سودانية","رواية من الأدب السوداني المعاصر."],
+["مسيح دارفور","عبد العزيز بركة ساكن","روايات سودانية","رواية تتناول تحولات المجتمع والحرب."],
+["الرجل الخراب","حمور زيادة","روايات سودانية","عمل روائي سوداني معاصر."],
+["صائد اليرقات","أمير تاج السر","روايات سودانية","رواية عن الكتابة والواقع."],
+["إيبولا 76","أمير تاج السر","روايات سودانية","رواية تتناول الخوف والوباء."],
+["توترات القبطي","أمير تاج السر","روايات سودانية","رواية من الأدب السوداني الحديث."],
+["مهر الصياح","أمير تاج السر","روايات سودانية","رواية سودانية معاصرة."],
+["زهور تأكلها النار","أمير تاج السر","روايات سودانية","رواية تاريخية واجتماعية."],
+["فركة","عبد العزيز بركة ساكن","روايات سودانية","عمل من الأدب السوداني المعاصر."],
+["رجال في الشمس","غسان كنفاني","روايات عربية","رواية عربية شهيرة عن اللجوء والاغتراب."],
+["عائد إلى حيفا","غسان كنفاني","روايات عربية","رواية قصيرة عن الذاكرة والوطن."],
+["اللص والكلاب","نجيب محفوظ","روايات عربية","رواية عن الخيانة والتحولات الاجتماعية."],
+["بين القصرين","نجيب محفوظ","روايات عربية","الجزء الأول من الثلاثية."],
+["قصر الشوق","نجيب محفوظ","روايات عربية","الجزء الثاني من الثلاثية."],
+["السكرية","نجيب محفوظ","روايات عربية","الجزء الثالث من الثلاثية."],
+["زقاق المدق","نجيب محفوظ","روايات عربية","رواية من الحارة المصرية."],
+["بداية ونهاية","نجيب محفوظ","روايات عربية","رواية اجتماعية عن الأسرة."],
+["أولاد حارتنا","نجيب محفوظ","روايات عربية","رواية رمزية شهيرة."],
+["ثرثرة فوق النيل","نجيب محفوظ","روايات عربية","رواية اجتماعية وفكرية."],
+["ذاكرة الجسد","أحلام مستغانمي","روايات عربية","رواية عن الحب والذاكرة."],
+["فوضى الحواس","أحلام مستغانمي","روايات عربية","رواية أدبية عن العاطفة والهوية."],
+["الأسود يليق بك","أحلام مستغانمي","روايات عربية","رواية عن الحب والكبرياء."],
+["عزازيل","يوسف زيدان","روايات عربية","رواية تاريخية تدور في العصور القديمة."],
+["واحة الغروب","بهاء طاهر","روايات عربية","رواية تاريخية واجتماعية."],
+["عمارة يعقوبيان","علاء الأسواني","روايات عربية","رواية ترصد شرائح من المجتمع."],
+["يوتوبيا","أحمد خالد توفيق","روايات عربية","رواية مستقبلية ذات طابع اجتماعي."],
+["في قلبي أنثى عبرية","خولة حمدي","روايات عربية","رواية اجتماعية وعاطفية."],
+["أرض زيكولا","عمرو عبد الحميد","روايات عربية","رواية خيالية ومغامرات."],
+["أماريتا","عمرو عبد الحميد","روايات عربية","جزء لاحق من عالم أرض زيكولا."],
+["مئة عام من العزلة","غابرييل غارسيا ماركيز","روايات عالمية","من أشهر روايات الواقعية السحرية."],
+["الحب في زمن الكوليرا","غابرييل غارسيا ماركيز","روايات عالمية","رواية عن الحب والزمن."],
+["دون كيشوت","ميغيل دي ثيربانتس","روايات عالمية","من كلاسيكيات الأدب العالمي."],
+["الجريمة والعقاب","فيودور دوستويفسكي","روايات عالمية","رواية نفسية وفلسفية."],
+["الأخوة كارامازوف","فيودور دوستويفسكي","روايات عالمية","رواية فلسفية عن الأسرة والإيمان."],
+["الأبله","فيودور دوستويفسكي","روايات عالمية","رواية كلاسيكية روسية."],
+["البؤساء","فيكتور هوغو","روايات عالمية","ملحمة إنسانية عن العدالة والرحمة."],
+["أحدب نوتردام","فيكتور هوغو","روايات عالمية","رواية تاريخية فرنسية."],
+["الحرب والسلام","ليو تولستوي","روايات عالمية","ملحمة عن الحرب والمجتمع."],
+["آنا كارنينا","ليو تولستوي","روايات عالمية","رواية كلاسيكية عن الحب والمجتمع."],
+["1984","جورج أورويل","روايات عالمية","رواية ديستوبية عن السلطة والمراقبة."],
+["مزرعة الحيوان","جورج أورويل","روايات عالمية","رواية رمزية سياسية."],
+["الأمير الصغير","أنطوان دو سانت إكزوبيري","روايات عالمية","حكاية فلسفية محببة للكبار والصغار."],
+["الغريب","ألبير كامو","روايات عالمية","رواية فلسفية من أدب العبث."],
+["ذهب مع الريح","مارغريت ميتشل","روايات عالمية","رواية تاريخية أمريكية."],
+["غاتسبي العظيم","ف. سكوت فيتزجيرالد","روايات عالمية","رواية عن الحلم الأمريكي."],
+["فرانكشتاين","ماري شيلي","غموض ورعب","من أشهر روايات الخيال والرعب."],
+["دراكولا","برام ستوكر","غموض ورعب","رواية كلاسيكية عن مصاصي الدماء."],
+["جزيرة الكنز","روبرت لويس ستيفنسون","روايات عالمية","مغامرة كلاسيكية عن القراصنة."],
+["رحلة إلى مركز الأرض","جول فيرن","روايات عالمية","رواية مغامرات وخيال علمي."],
+["ثم لم يبقَ أحد","أجاثا كريستي","غموض ورعب","لغز بوليسي في جزيرة معزولة."],
+["جريمة في قطار الشرق السريع","أجاثا كريستي","غموض ورعب","تحقيق شهير للمحقق بوارو."],
+["مقتل روجر أكرويد","أجاثا كريستي","غموض ورعب","رواية بوليسية مليئة بالمفاجآت."],
+["جريمة في بلاد الرافدين","أجاثا كريستي","غموض ورعب","لغز بوليسي في بعثة أثرية."],
+["كلب آل باسكرفيل","آرثر كونان دويل","غموض ورعب","إحدى أشهر مغامرات شرلوك هولمز."],
+["دراسة في اللون القرمزي","آرثر كونان دويل","غموض ورعب","أول ظهور لشرلوك هولمز وواتسون."],
+["اسم الوردة","أمبرتو إيكو","غموض ورعب","لغز تاريخي داخل دير قديم."],
+["شفرة دافنشي","دان براون","غموض ورعب","إثارة وألغاز تاريخية."],
+["ملائكة وشياطين","دان براون","غموض ورعب","رواية تشويق ومطاردات."],
+["فتاة القطار","باولا هوكينز","غموض ورعب","رواية نفسية مليئة بالأسرار."],
+["المقدمة","ابن خلدون","تاريخ وثقافة","من أهم مؤلفات الفكر الاجتماعي والتاريخ."],
+["الأيام","طه حسين","تاريخ وثقافة","سيرة ذاتية أدبية."],
+["كليلة ودمنة","ابن المقفع","تاريخ وثقافة","حكايات تراثية ذات حكم."],
+["ألف ليلة وليلة","تراث عربي","تاريخ وثقافة","مجموعة حكايات من التراث."],
+["حي بن يقظان","ابن طفيل","تاريخ وثقافة","قصة فلسفية تراثية."],
+["البخلاء","الجاحظ","تاريخ وثقافة","كتاب أدبي ساخر من التراث العربي."],
+["العبر","ابن خلدون","تاريخ وثقافة","مؤلف تاريخي واسع."],
+["قصة الحضارة","ويل ديورانت","تاريخ وثقافة","عرض واسع لتاريخ الحضارات."],
+["تاريخ موجز للزمان","ستيفن هوكينغ","تاريخ وثقافة","مدخل مبسط إلى الكون والفيزياء."],
+["رحلة ابن بطوطة","ابن بطوطة","تاريخ وثقافة","رحلات ومشاهدات من بلدان عديدة."],
+["فن الحرب","سون تزو","تاريخ وثقافة","نص كلاسيكي في الاستراتيجية."],
+["الأمير","نيكولو مكيافيلي","تاريخ وثقافة","كتاب كلاسيكي في الفكر السياسي."],
+["الأربعون النووية","الإمام النووي","كتب إسلامية","مجموعة أحاديث جامعة."],
+["رياض الصالحين","الإمام النووي","كتب إسلامية","كتاب في الحديث والآداب."],
+["الأذكار","الإمام النووي","كتب إسلامية","أذكار وأدعية مأثورة."],
+["الرحيق المختوم","صفي الرحمن المباركفوري","كتب إسلامية","سيرة نبوية مختصرة."],
+["فقه السنة","سيد سابق","كتب إسلامية","عرض لأبواب من الفقه."],
+["تفسير جزء عم","مجموعة من العلماء","كتب إسلامية","تفسير مبسط لجزء عم."],
+["مختصر صحيح البخاري","الإمام البخاري","كتب إسلامية","مختارات من أحاديث صحيح البخاري."],
+["زاد المعاد","ابن القيم","كتب إسلامية","كتاب في السيرة والهدي النبوي."],
+["إحياء علوم الدين","أبو حامد الغزالي","كتب إسلامية","كتاب تراثي في تزكية النفس."],
+["لا تحزن","عائض القرني","كتب إسلامية","خواطر في التفاؤل والصبر."],
+["العادات الذرية","جيمس كلير","علوم ومعرفة","خطوات عملية لبناء العادات."],
+["الأب الغني والأب الفقير","روبرت كيوساكي","علوم ومعرفة","كتاب في الثقافة المالية."],
+["فكر تصبح غنياً","نابليون هيل","علوم ومعرفة","أفكار عن الأهداف والنجاح."],
+["قوة الآن","إيكهارت تول","علوم ومعرفة","كتاب في الوعي والحضور الذهني."],
+["كيف تكسب الأصدقاء وتؤثر في الناس","ديل كارنيجي","علوم ومعرفة","مهارات التواصل والعلاقات."],
+["دع القلق وابدأ الحياة","ديل كارنيجي","علوم ومعرفة","إرشادات للتعامل مع القلق اليومي."],
+["الإنسان يبحث عن معنى","فيكتور فرانكل","علوم ومعرفة","تأملات في المعنى والصمود."],
+["التفكير السريع والبطيء","دانيال كانيمان","علوم ومعرفة","مدخل إلى آليات التفكير واتخاذ القرار."],
+["قوة العادات","تشارلز دويج","علوم ومعرفة","كيف تتكون العادات وتتغير."],
+["العمل العميق","كال نيوبورت","علوم ومعرفة","استراتيجيات التركيز والعمل المنتج."],
+["ابدأ بالأهم ولو كان صعباً","برايان تريسي","علوم ومعرفة","إدارة الوقت والأولويات."],
+["نظرية الفستق","فهد عامر الأحمدي","علوم ومعرفة","مقالات وأفكار في تطوير الذات."],
+["رحلتي من الشك إلى الإيمان","مصطفى محمود","علوم ومعرفة","تأملات فكرية وفلسفية."]
 ];
 
-const booksData = [
- ["موسم الهجرة إلى الشمال","الطيب صالح","روايات سودانية","من أشهر الأعمال الأدبية السودانية."],
- ["عرس الزين","الطيب صالح","روايات سودانية","رواية من أجواء القرية السودانية."],
- ["بندر شاه","الطيب صالح","روايات سودانية","من الأعمال الأدبية السودانية."],
- ["شوق الدرويش","حمور زيادة","روايات سودانية","رواية تاريخية سودانية."],
- ["الجنقو مسامير الأرض","عبد العزيز بركة ساكن","روايات سودانية","من الأدب السوداني المعاصر."],
- ["صائد اليرقات","أمير تاج السر","روايات سودانية","رواية سودانية معاصرة."],
- ["رجال في الشمس","غسان كنفاني","روايات عربية","رواية عربية شهيرة."],
- ["اللص والكلاب","نجيب محفوظ","روايات عربية","من الأدب العربي الحديث."],
- ["الثلاثية","نجيب محفوظ","روايات عربية","عمل أدبي من أشهر الروايات العربية."],
- ["مئة عام من العزلة","غابرييل غارسيا ماركيز","روايات عالمية","من الروايات العالمية الشهيرة."],
- ["دون كيشوت","ميغيل دي ثيربانتس","روايات عالمية","من كلاسيكيات الأدب العالمي."],
- ["الجريمة والعقاب","فيودور دوستويفسكي","غموض ورعب","رواية نفسية وفلسفية."],
- ["ألف ليلة وليلة","مؤلفون مجهولون","روايات عربية","حكايات تراثية عربية."],
- ["كليلة ودمنة","ابن المقفع","تاريخ وثقافة","حكايات أدبية تراثية."],
- ["المقدمة","ابن خلدون","تاريخ وثقافة","من أشهر كتب الفكر والتاريخ."],
- ["الأيام","طه حسين","تاريخ وثقافة","سيرة أدبية عربية."],
- ["حي بن يقظان","ابن طفيل","علوم ومعرفة","عمل فلسفي تراثي."],
- ["الأربعون النووية","الإمام النووي","كتب إسلامية","مجموعة أحاديث نبوية."],
- ["رياض الصالحين","الإمام النووي","كتب إسلامية","كتاب في الحديث والآداب."],
- ["العادات الذرية","جيمس كلير","علوم ومعرفة","كتاب في تطوير العادات."]
-];
+const categories=["الكل","روايات سودانية","روايات عربية","روايات عالمية","غموض ورعب","تاريخ وثقافة","كتب إسلامية","علوم ومعرفة"];
+const catalog=BOOKS.map((b,i)=>({id:"book-"+(i+1),title:b[0],author:b[1],category:b[2],desc:b[3],price:1000}));
+let selected="الكل",cart=[];
 
-const catalog = booksData.map((b,i)=>({
- id:i+1,title:b[0],author:b[1],category:b[2],
- desc:b[3],price:1000,
- fileUrl:"",
- licensed:false
-}));
-
-let selected="الكل";
-let cart=[];
+function money(n){return Number(n).toLocaleString("en-US")}
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 
 function renderCategories(){
- document.getElementById("categories").innerHTML=categories.map(c=>
- `<button class="cat ${selected===c?'active':''}" onclick="chooseCategory('${c
-    
+ const holder=document.getElementById("categories");
+ holder.innerHTML="";
+ categories.forEach(category=>{
+  const button=document.createElement("button");
+  button.type="button";button.className="cat"+(selected===category?" active":"");
+  button.textContent=category==="الكل"?"الكل ("+catalog.length+")":category+" ("+catalog.filter(b=>b.category===category).length+")";
+  button.addEventListener("click",()=>{selected=category;renderCategories();renderBooks()});
+  holder.appendChild(button);
+ });
+}
+function renderBooks(){
+ const term=document.getElementById("search").value.trim().toLowerCase();
+ const sort=document.getElementById("sort").value;
+ let filtered=catalog.filter(b=>(selected==="الكل"||b.category===selected)&&(b.title+" "+b.author+" "+b.category).toLowerCase().includes(term));
+ if(sort==="az")filtered.sort((a,b)=>a.title.localeCompare(b.title,"ar"));
+ if(sort==="za")filtered.sort((a,b)=>b.title.localeCompare(a.title,"ar"));
+ const holder=document.getElementById("books");holder.innerHTML="";
+ if(!filtered.length){holder.innerHTML='<div class="empty">لا توجد نتائج مطابقة لبحثك.</div>';return}
+ filtered.forEach(book=>{
+  const card=document.createElement("article");card.className="book";
+  card.innerHTML='<div class="cover"><b>'+escapeHTML(book.title)+'<small>'+escapeHTML(book.author)+'</small></b></div>'+
+   '<div class="book-info"><h3>'+escapeHTML(book.title)+'</h3><div class="author">'+escapeHTML(book.author)+'</div>'+
+   '<div class="category-label">'+escapeHTML(book.category)+'</div><p class="desc">'+escapeHTML(book.desc)+'</p>'+
+   '<div class="price">'+money(book.price)+' جنيه</div><button class="add" type="button">🛒 أضف إلى السلة</button></div>';
+  card.querySelector("button").addEventListener("click",()=>addBook(book.id));
+  holder.appendChild(card);
+ });
+}
+function addBook(id){
+ const book=catalog.find(b=>b.id===id);if(!book)return;
+ const old=cart.find(x=>x.id===id);
+ if(old)old.qty++;else cart.push({...book,qty:1});
+ updateCart();alert("تمت إضافة "+book.title+" إلى السلة");
+}
+function addBundle(name,price){
+ const id="bundle-"+name,old=cart.find(x=>x.id===id);
+ if(old)old.qty++;else cart.push({id,title:"باقة "+name,price,type:"باقة",qty:1});
+ updateCart();alert("تمت إضافة باقة "+name+" إلى السلة");
+}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+function updateCart(){
+ document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);
+ const holder=document.getElementById("cartItems");holder.innerHTML="";
+ if(!cart.length)holder.innerHTML='<div class="empty">السلة فارغة حالياً. أضف كتاباً أو باقة للمتابعة.</div>';
+ cart.forEach(item=>{
+  const line=document.createElement("div");line.className="cart-line";
+  const details=document.createElement("span");details.textContent=item.title+" × "+item.qty+" — "+money(item.price*item.qty)+" جنيه";
+  const remove=document.createElement("button");remove.className="remove";remove.type="button";remove.textContent="حذف";
+  remove.addEventListener("click",()=>removeItem(item.id));line.append(details,remove);holder.appendChild(line);
+ });
+ const total=cart.reduce((s,x)=>s+x.price*x.qty,0);document.getElementById("total").textContent=money(total);
+ const link=document.getElementById("send");
+ if(!cart.length){link.href="#";link.style.opacity=".5";link.style.pointerEvents="none";return}
+ link.style.opacity="1";link.style.pointerEvents="auto";
+ const lines=cart.map(x=>"- "+x.title+" × "+x.qty+" = "+money(x.price*x.qty)+" جنيه");
+ const message=["السلام عليكم، أريد تأكيد طلب من مكتبة أبو العربي:","",...lines,"","الإجمالي: "+money(total)+" جنيه","","سأرسل إشعار تحويل بنكك هنا بعد التحويل. أرجو تأكيد الاستلام وإرسال تفاصيل التسليم بعد المراجعة."].join("\n");
+ link.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message);
+}
+function openCart(){updateCart();document.getElementById("modal").classList.add("show");document.body.style.overflow="hidden"}
+function closeCart(){document.getElementById("modal").classList.remove("show");document.body.style.overflow=""}
+function closeOnBackdrop(e){if(e.target.id==="modal")closeCart()}
+document.getElementById("bookCount").textContent=catalog.length;
+renderCategories();renderBooks();updateCart();
+</script>
+</body>
+</html>
