@@ -6,13 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#102746">
 <title>مكتبة أبو العربي | متجر الكتب</title>
+
 <style>
 *{box-sizing:border-box}
 body{margin:0;background:#f5f6fa;color:#253247;font-family:Tahoma,Arial,sans-serif}
 header{background:#102746;color:white;padding:15px 5%;position:sticky;top:0;z-index:10}
 .nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .logo{font-size:22px;font-weight:bold}.logo span{color:#e8b64e}
-button,input{font:inherit}button{cursor:pointer}
+button,input,select{font:inherit}
+button{cursor:pointer}
 .cart{background:#e8b64e;border:0;border-radius:8px;padding:10px 15px;font-weight:bold;color:#102746}
 .hero{background:linear-gradient(120deg,#102746,#24578a);color:white;padding:50px 6%}
 .hero-inner{max-width:1150px;margin:auto}
@@ -44,6 +46,7 @@ button,input{font:inherit}button{cursor:pointer}
 .desc{font-size:11px;color:#687589;line-height:1.8;min-height:39px;margin:8px 0}
 .price{font-weight:bold;color:#b07b27;margin:8px 0 11px;font-size:14px}
 .add{width:100%;padding:10px;border:0;border-radius:7px;background:#194c7e;color:white;font-weight:bold;margin-top:auto}
+.add:hover{background:#102746}
 .bundles{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
 .bundle{padding:24px;color:white;border-radius:12px;background:linear-gradient(120deg,#263d62,#5179a4)}
 .bundle:nth-child(2){background:linear-gradient(120deg,#55302c,#a55b44)}
@@ -71,14 +74,18 @@ footer p{color:#cbd6e4;font-size:13px}
 .cart{padding:9px 11px;font-size:13px}
 .searchbar{flex-direction:column}
 }
+@media(max-width:350px){.books{grid-template-columns:1fr}}
 </style>
 </head>
+
 <body>
 
 <header>
 <div class="nav">
 <div class="logo">📚 مكتبة <span>أبو العربي</span></div>
-<button class="cart" onclick="openCart()">🛒 السلة (<span id="count">0</span>)</button>
+<button class="cart" type="button" onclick="openCart()">
+🛒 السلة (<span id="count">0</span>)
+</button>
 </div>
 </header>
 
@@ -86,18 +93,24 @@ footer p{color:#cbd6e4;font-size:13px}
 <div class="hero-inner">
 <h1>اقرأ أكثر.. <span>اكتشف عالماً جديداً</span></h1>
 <p>روايات وكتب وثقافة ومعرفة.. مكتبتك الرقمية في مكان واحد.</p>
-<button onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">اكتشف الكتب ←</button>
+<button type="button" onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">
+اكتشف الكتب ←
+</button>
 </div>
 </section>
 
 <main class="container">
+
 <section id="library">
 <h2 class="heading">📚 تصفح <span>المكتبة</span></h2>
+
 <div class="stats">
-<div class="stat">📖 عدد العناوين: <b>100</b></div>
+<div class="stat">📖 عدد العناوين: <b id="bookCount">100</b></div>
 <div class="stat">🛍️ سعر الكتاب: <b>1,000 جنيه</b></div>
 </div>
+
 <div class="categories" id="categories"></div>
+
 <div class="searchbar">
 <input id="search" type="search" placeholder="ابحث عن كتاب أو رواية أو مؤلف..." oninput="renderBooks()">
 <select id="sort" onchange="renderBooks()">
@@ -106,26 +119,30 @@ footer p{color:#cbd6e4;font-size:13px}
 <option value="za">الاسم: ي - أ</option>
 </select>
 </div>
+
 <div class="books" id="books"></div>
 </section>
 
 <section style="margin-top:45px">
 <h2 class="heading">🎁 باقات <span>القراءة</span></h2>
+
 <div class="bundles">
 <div class="bundle">
 <h3>🇸🇩 الأدب السوداني</h3>
 <p>مجموعة من الأدب والروايات السودانية.</p>
 <b>3,000 جنيه</b>
-<p><button class="add" onclick="addBundle('الأدب السوداني',3000)">🛒 شراء الباقة</button></p>
+<p><button class="add" type="button" onclick="addBundle('الأدب السوداني',3000)">🛒 شراء الباقة</button></p>
 </div>
+
 <div class="bundle">
 <h3>👻 الغموض والتشويق</h3>
 <p>رحلة في عالم الألغاز والأحداث المشوقة.</p>
 <b>3,000 جنيه</b>
-<p><button class="add" onclick="addBundle('الغموض والتشويق',3000)">🛒 شراء الباقة</button></p>
+<p><button class="add" type="button" onclick="addBundle('الغموض والتشويق',3000)">🛒 شراء الباقة</button></p>
 </div>
 </div>
 </section>
+
 </main>
 
 <footer>
@@ -136,25 +153,34 @@ footer p{color:#cbd6e4;font-size:13px}
 
 <div class="modal-bg" id="modal" onclick="closeOnBackdrop(event)">
 <div class="modal">
-<button class="close" onclick="closeCart()">✕ إغلاق</button>
+<button class="close" type="button" onclick="closeCart()">✕ إغلاق</button>
 <h2>🛒 سلة مشترياتك</h2>
 <div id="cartItems"></div>
+
 <h3>الإجمالي: <span id="total">0</span> جنيه</h3>
+
 <div class="bank">
 <b>💳 التحويل عبر بنكك</b><br>
 المستفيد: أحمد جاه الرسول<br>
 رقم الحساب: 9883587<br>
 <small>بعد التحويل أرسل إشعار التحويل عبر واتساب.</small>
 </div>
-<a id="send" class="whatsapp" href="#" target="_blank" rel="noopener">إرسال الطلب عبر واتساب</a>
-<p class="note">لا يتم تسليم روابط الكتب إلا بعد مراجعة التحويل يدوياً.</p>
+
+<a id="send" class="whatsapp" href="#" target="_blank" rel="noopener">
+إرسال الطلب وإشعار التحويل عبر واتساب
+</a>
+
+<p class="note">بعد التحويل أرسل إشعار بنكك في محادثة واتساب. لن يتم تأكيد الطلب أو تسليم الكتب إلا بعد مراجعة التحويل يدوياً.</p>
 </div>
 </div>
 
 <script>
-const WHATSAPP="249111441216";
+"use strict";
 
-const BOOKS=[
+const WHATSAPP = "249111441216";
+const BOOK_PRICE = 1000;
+
+const BOOKS = [
 ["موسم الهجرة إلى الشمال","الطيب صالح","روايات سودانية","رواية سودانية كلاسيكية عن الهوية والاغتراب."],
 ["عرس الزين","الطيب صالح","روايات سودانية","حكاية اجتماعية من القرية السودانية."],
 ["بندر شاه","الطيب صالح","روايات سودانية","عمل روائي من عالم الطيب صالح."],
@@ -257,77 +283,220 @@ const BOOKS=[
 ["رحلتي من الشك إلى الإيمان","مصطفى محمود","علوم ومعرفة","تأملات فكرية وفلسفية."]
 ];
 
-const categories=["الكل","روايات سودانية","روايات عربية","روايات عالمية","غموض ورعب","تاريخ وثقافة","كتب إسلامية","علوم ومعرفة"];
-const catalog=BOOKS.map((b,i)=>({id:"book-"+(i+1),title:b[0],author:b[1],category:b[2],desc:b[3],price:1000}));
-let selected="الكل",cart=[];
+const categories=[
+"الكل","روايات سودانية","روايات عربية","روايات عالمية",
+"غموض ورعب","تاريخ وثقافة","كتب إسلامية","علوم ومعرفة"
+];
 
-function money(n){return Number(n).toLocaleString("en-US")}
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+const catalog=BOOKS.map((b,i)=>({
+id:"book-"+(i+1),
+title:b[0],author:b[1],category:b[2],
+desc:b[3],price:BOOK_PRICE
+}));
+
+let selected="الكل";
+let cart=[];
+
+function money(n){
+return Number(n).toLocaleString("en-US");
+}
+
+function escapeHTML(s){
+return String(s).replace(/[&<>"']/g,c=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+}
 
 function renderCategories(){
- const holder=document.getElementById("categories");
- holder.innerHTML="";
- categories.forEach(category=>{
-  const button=document.createElement("button");
-  button.type="button";button.className="cat"+(selected===category?" active":"");
-  button.textContent=category==="الكل"?"الكل ("+catalog.length+")":category+" ("+catalog.filter(b=>b.category===category).length+")";
-  button.addEventListener("click",()=>{selected=category;renderCategories();renderBooks()});
-  holder.appendChild(button);
- });
+const holder=document.getElementById("categories");
+holder.innerHTML="";
+
+categories.forEach(category=>{
+const button=document.createElement("button");
+button.type="button";
+button.className="cat"+(selected===category?" active":"");
+
+const amount=category==="الكل"
+?catalog.length
+:catalog.filter(b=>b.category===category).length;
+
+button.textContent=category+" ("+amount+")";
+
+button.addEventListener("click",()=>{
+selected=category;
+renderCategories();
+renderBooks();
+});
+
+holder.appendChild(button);
+});
 }
+
 function renderBooks(){
- const term=document.getElementById("search").value.trim().toLowerCase();
- const sort=document.getElementById("sort").value;
- let filtered=catalog.filter(b=>(selected==="الكل"||b.category===selected)&&(b.title+" "+b.author+" "+b.category).toLowerCase().includes(term));
- if(sort==="az")filtered.sort((a,b)=>a.title.localeCompare(b.title,"ar"));
- if(sort==="za")filtered.sort((a,b)=>b.title.localeCompare(a.title,"ar"));
- const holder=document.getElementById("books");holder.innerHTML="";
- if(!filtered.length){holder.innerHTML='<div class="empty">لا توجد نتائج مطابقة لبحثك.</div>';return}
- filtered.forEach(book=>{
-  const card=document.createElement("article");card.className="book";
-  card.innerHTML='<div class="cover"><b>'+escapeHTML(book.title)+'<small>'+escapeHTML(book.author)+'</small></b></div>'+
-   '<div class="book-info"><h3>'+escapeHTML(book.title)+'</h3><div class="author">'+escapeHTML(book.author)+'</div>'+
-   '<div class="category-label">'+escapeHTML(book.category)+'</div><p class="desc">'+escapeHTML(book.desc)+'</p>'+
-   '<div class="price">'+money(book.price)+' جنيه</div><button class="add" type="button">🛒 أضف إلى السلة</button></div>';
-  card.querySelector("button").addEventListener("click",()=>addBook(book.id));
-  holder.appendChild(card);
- });
+const term=document.getElementById("search").value.trim().toLowerCase();
+const sort=document.getElementById("sort").value;
+
+let filtered=catalog.filter(b=>
+(selected==="الكل"||b.category===selected)&&
+(b.title+" "+b.author+" "+b.category).toLowerCase().includes(term)
+);
+
+if(sort==="az")filtered.sort((a,b)=>a.title.localeCompare(b.title,"ar"));
+if(sort==="za")filtered.sort((a,b)=>b.title.localeCompare(a.title,"ar"));
+
+const holder=document.getElementById("books");
+holder.innerHTML="";
+
+if(!filtered.length){
+holder.innerHTML='<div class="empty">لا توجد نتائج مطابقة لبحثك.</div>';
+return;
 }
+
+filtered.forEach(book=>{
+const card=document.createElement("article");
+card.className="book";
+
+card.innerHTML=
+'<div class="cover"><b>'+escapeHTML(book.title)+
+'<small>'+escapeHTML(book.author)+'</small></b></div>'+
+'<div class="book-info"><h3>'+escapeHTML(book.title)+'</h3>'+
+'<div class="author">'+escapeHTML(book.author)+'</div>'+
+'<div class="category-label">'+escapeHTML(book.category)+'</div>'+
+'<p class="desc">'+escapeHTML(book.desc)+'</p>'+
+'<div class="price">'+money(book.price)+' جنيه</div>'+
+'<button class="add" type="button">🛒 أضف إلى السلة</button></div>';
+
+card.querySelector("button").addEventListener("click",()=>{
+addBook(book.id);
+});
+
+holder.appendChild(card);
+});
+}
+
 function addBook(id){
- const book=catalog.find(b=>b.id===id);if(!book)return;
- const old=cart.find(x=>x.id===id);
- if(old)old.qty++;else cart.push({...book,qty:1});
- updateCart();alert("تمت إضافة "+book.title+" إلى السلة");
+const book=catalog.find(b=>b.id===id);
+if(!book)return;
+
+const old=cart.find(x=>x.id===id);
+
+if(old)old.qty++;
+else cart.push({...book,qty:1});
+
+updateCart();
+alert("تمت إضافة "+book.title+" إلى السلة");
 }
+
 function addBundle(name,price){
- const id="bundle-"+name,old=cart.find(x=>x.id===id);
- if(old)old.qty++;else cart.push({id,title:"باقة "+name,price,type:"باقة",qty:1});
- updateCart();alert("تمت إضافة باقة "+name+" إلى السلة");
+const id="bundle-"+name;
+const old=cart.find(x=>x.id===id);
+
+if(old)old.qty++;
+else cart.push({
+id,
+title:"باقة "+name,
+price,
+type:"باقة",
+qty:1
+});
+
+updateCart();
+alert("تمت إضافة باقة "+name+" إلى السلة");
 }
-function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCart()}
+
+function removeItem(id){
+cart=cart.filter(x=>x.id!==id);
+updateCart();
+}
+
 function updateCart(){
- document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);
- const holder=document.getElementById("cartItems");holder.innerHTML="";
- if(!cart.length)holder.innerHTML='<div class="empty">السلة فارغة حالياً. أضف كتاباً أو باقة للمتابعة.</div>';
- cart.forEach(item=>{
-  const line=document.createElement("div");line.className="cart-line";
-  const details=document.createElement("span");details.textContent=item.title+" × "+item.qty+" — "+money(item.price*item.qty)+" جنيه";
-  const remove=document.createElement("button");remove.className="remove";remove.type="button";remove.textContent="حذف";
-  remove.addEventListener("click",()=>removeItem(item.id));line.append(details,remove);holder.appendChild(line);
- });
- const total=cart.reduce((s,x)=>s+x.price*x.qty,0);document.getElementById("total").textContent=money(total);
- const link=document.getElementById("send");
- if(!cart.length){link.href="#";link.style.opacity=".5";link.style.pointerEvents="none";return}
- link.style.opacity="1";link.style.pointerEvents="auto";
- const lines=cart.map(x=>"- "+x.title+" × "+x.qty+" = "+money(x.price*x.qty)+" جنيه");
- const message=["السلام عليكم، أريد تأكيد طلب من مكتبة أبو العربي:","",...lines,"","الإجمالي: "+money(total)+" جنيه","","سأرسل إشعار تحويل بنكك هنا بعد التحويل. أرجو تأكيد الاستلام وإرسال تفاصيل التسليم بعد المراجعة."].join("\n");
- link.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message);
+document.getElementById("count").textContent=
+cart.reduce((s,x)=>s+x.qty,0);
+
+const holder=document.getElementById("cartItems");
+holder.innerHTML="";
+
+if(!cart.length){
+holder.innerHTML=
+'<div class="empty">السلة فارغة حالياً. أضف كتاباً أو باقة للمتابعة.</div>';
 }
-function openCart(){updateCart();document.getElementById("modal").classList.add("show");document.body.style.overflow="hidden"}
-function closeCart(){document.getElementById("modal").classList.remove("show");document.body.style.overflow=""}
-function closeOnBackdrop(e){if(e.target.id==="modal")closeCart()}
+
+cart.forEach(item=>{
+const line=document.createElement("div");
+line.className="cart-line";
+
+const details=document.createElement("span");
+details.textContent=
+item.title+" × "+item.qty+" — "+
+money(item.price*item.qty)+" جنيه";
+
+const remove=document.createElement("button");
+remove.className="remove";
+remove.type="button";
+remove.textContent="حذف";
+remove.addEventListener("click",()=>removeItem(item.id));
+
+line.append(details,remove);
+holder.appendChild(line);
+});
+
+const total=cart.reduce((s,x)=>s+x.price*x.qty,0);
+document.getElementById("total").textContent=money(total);
+
+const link=document.getElementById("send");
+
+if(!cart.length){
+link.href="#";
+link.style.opacity=".5";
+link.style.pointerEvents="none";
+return;
+}
+
+link.style.opacity="1";
+link.style.pointerEvents="auto";
+
+const lines=cart.map(x=>
+"- "+x.title+" × "+x.qty+" = "+money(x.price*x.qty)+" جنيه"
+);
+
+const message=[
+"السلام عليكم، أريد تأكيد طلب من مكتبة أبو العربي:",
+"",
+...lines,
+"",
+"الإجمالي: "+money(total)+" جنيه",
+"",
+"سأرسل إشعار تحويل بنكك في هذه المحادثة بعد التحويل. أرجو تأكيد الاستلام وإرسال تفاصيل التسليم بعد المراجعة."
+].join("\n");
+
+link.href="https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(message);
+}
+
+function openCart(){
+updateCart();
+document.getElementById("modal").classList.add("show");
+document.body.style.overflow="hidden";
+}
+
+function closeCart(){
+document.getElementById("modal").classList.remove("show");
+document.body.style.overflow="";
+}
+
+function closeOnBackdrop(e){
+if(e.target.id==="modal")closeCart();
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape")closeCart();
+});
+
+// تشغيل المتجر
 document.getElementById("bookCount").textContent=catalog.length;
-renderCategories();renderBooks();updateCart();
+renderCategories();
+renderBooks();
+updateCart();
 </script>
+
 </body>
 </html>
