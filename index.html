@@ -1,199 +1,179 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتبة أبو العربي - حزم الكتب الرقمية</title>
-    <style>
-        body {
-            font-family: Tahoma, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 15px;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 650px;
-            background: #ffffff;
-            margin: auto;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        h1 { color: #2c3e50; font-size: 22px; margin-bottom: 5px; }
-        .subtitle { color: #555; font-size: 14px; margin-bottom: 20px; }
-        .card {
-            background: #fff;
-            border: 2px solid #e74c3c;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            text-align: right;
-        }
-        .card:hover { background: #f9ebea; }
-        .card h3 { color: #e74c3c; margin: 0 0 8px 0; }
-        .section { display: none; }
-        .active { display: block; }
-        
-        .book-item {
-            background: #fdfefe;
-            border: 1px solid #e0e0e0;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 8px;
-            text-align: right;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-        }
-        .book-title { font-weight: bold; color: #2c3e50; font-size: 16px; margin-bottom: 4px; }
-        .book-author { color: #e67e22; font-size: 13px; margin-bottom: 6px; }
-        .book-desc { color: #666; font-size: 13px; margin-bottom: 10px; line-height: 1.4; }
-        
-        .btn-select {
-            background-color: #2980b9;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-            display: block;
-            width: 100%;
-        }
-        .btn-select:hover { background-color: #1f618d; }
-        
-        .bank-box {
-            background: #eef2f3;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            text-align: right;
-            border-right: 4px solid #2980b9;
-        }
-        .btn-whatsapp {
-            display: block;
-            background-color: #25d366;
-            color: white;
-            padding: 12px 20px;
-            text-decoration: none;
-            font-size: 16px;
-            border-radius: 6px;
-            margin-top: 15px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .back-btn {
-            background: #7f8c8d;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 15px;
-            float: right;
-        }
-        .clear { clear: both; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#102746">
+<title>مكتبة أبو العربي | متجر الكتب</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f5f6fa;color:#253247;font-family:Tahoma,Arial,sans-serif}
+header{background:#102746;color:white;padding:17px 5%;position:sticky;top:0;z-index:10}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:22px;font-weight:bold}
+.logo span{color:#e8b64e}
+button,input{font:inherit}
+button{cursor:pointer}
+.cart{background:#e8b64e;border:0;border-radius:8px;padding:10px 15px;font-weight:bold;color:#102746}
+.hero{background:linear-gradient(120deg,#102746,#24578a);color:white;padding:55px 6%}
+.hero-inner{max-width:1150px;margin:auto}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.5;margin:0}
+.hero h1 span{color:#f0bd50}
+.hero p{line-height:2;color:#e0e8f2}
+.hero button{background:#e8b64e;border:0;padding:13px 25px;border-radius:8px;font-weight:bold}
+.container{max-width:1200px;margin:auto;padding:35px 5%}
+.heading{font-size:24px;color:#102746;margin:0 0 20px}
+.heading span{color:#c28d2d}
+.categories{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0}
+.cat{border:1px solid #d9e0e9;background:white;padding:9px 16px;border-radius:30px;color:#102746}
+.cat.active,.cat:hover{background:#102746;color:white}
+.search input{width:100%;padding:14px;border:1px solid #dce2eb;border-radius:9px;margin-bottom:22px}
+.books{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.book{background:white;border:1px solid #e6eaf0;border-radius:12px;overflow:hidden;box-shadow:0 3px 12px #1027460c}
+.cover{height:190px;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:white;background:linear-gradient(140deg,#163353,#3975a3)}
+.cover b{font-size:20px;line-height:1.7}
+.cover small{display:block;font-size:12px;font-weight:normal}
+.book-info{padding:13px}
+.book h3{font-size:15px;margin:0 0 8px;color:#102746}
+.author{font-size:12px;color:#b07b27}
+.desc{font-size:12px;color:#687589;line-height:1.8;min-height:42px}
+.price{font-weight:bold;color:#b07b27;margin:12px 0}
+.status{font-size:11px;color:#8a6728;background:#fff4d9;padding:6px;border-radius:5px;margin-bottom:9px}
+.add{width:100%;padding:10px;border:0;border-radius:7px;background:#194c7e;color:white;font-weight:bold}
+.add:disabled{background:#aeb8c5;cursor:not-allowed}
+.bundles{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.bundle{padding:25px;color:white;border-radius:12px;background:linear-gradient(120deg,#263d62,#5179a4)}
+.bundle:nth-child(2){background:linear-gradient(120deg,#55302c,#a55b44)}
+.bundle h3{font-size:20px}
+footer{background:#102746;color:white;text-align:center;padding:30px;margin-top:35px}
+footer p{color:#cbd6e4;font-size:13px}
+.modal-bg{display:none;position:fixed;inset:0;background:#0009;z-index:30;align-items:center;justify-content:center;padding:15px}
+.modal{background:white;padding:22px;border-radius:13px;width:100%;max-width:480px;max-height:90vh;overflow:auto}
+.close{float:left;border:0;background:#eee;padding:7px 12px;border-radius:5px}
+.cart-line{display:flex;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #eee;font-size:13px}
+.remove{border:0;background:#ffe6e6;color:#a22;padding:5px;border-radius:5px}
+.bank{background:#f0f4f8;padding:14px;border-radius:9px;line-height:2;margin:15px 0}
+.whatsapp{display:block;text-align:center;text-decoration:none;background:#20bd65;color:white;padding:13px;border-radius:8px;font-weight:bold}
+.empty{text-align:center;grid-column:1/-1;background:white;padding:30px;border-radius:10px}
+@media(max-width:850px){.books{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:580px){
+ .books{grid-template-columns:repeat(2,1fr);gap:10px}
+ .cover{height:155px}.cover b{font-size:16px}
+ .bundles{grid-template-columns:1fr}
+ .container{padding:25px 4%}
+ .logo{font-size:17px}
+}
+</style>
 </head>
 <body>
 
-<div class="container">
-    
-    <!-- الصفحة الرئيسية: عرض الحزم -->
-    <div id="home-section" class="section active">
-        <h1>مكتبة أبو العربي 📚</h1>
-        <p class="subtitle">عالم من المعرفة والروايات بين يديك. اقرأ فوراً على هاتفك ودفع سهل وسريع عبر تطبيق (بنكك)</p>
-        
-        <div class="card" onclick="showSudaneseBooks()">
-            <h3>🇸🇩 حزمة الروايات السودانية المميزة</h3>
-            <p>تشمل روائع الأدب السوداني الكلاسيكي والمعاصر بتنسيق ممتاز.</p>
-            <b style="color: #e74c3c;">السعر: 3,000 جنيه</b>
-        </div>
+<header>
+ <div class="nav">
+  <div class="logo">📚 مكتبة <span>أبو العربي</span></div>
+  <button class="cart" onclick="openCart()">🛒 السلة (<span id="count">0</span>)</button>
+ </div>
+</header>
 
-        <div class="card" onclick="alert('قريباً جداً توفر باقي الحزم في المتجر!')">
-            <h3>👻 حزمة الغموض والإثارة والتشويق</h3>
-            <p>تشمل 15 رواية غموض ورعب كلاسيكية مترجمة ومنسقة بعناية.</p>
-            <b style="color: #e74c3c;">السعر: 3,000 جنيه</b>
-        </div>
-    </div>
+<section class="hero">
+ <div class="hero-inner">
+  <h1>اقرأ أكثر.. <span>اكتشف عالماً جديداً</span></h1>
+  <p>روايات وكتب وثقافة ومعرفة.. مكتبتك الرقمية في مكان واحد.</p>
+  <button onclick="document.getElementById('library').scrollIntoView({behavior:'smooth'})">اكتشف الكتب ←</button>
+ </div>
+</section>
 
-    <!-- قسم الروايات السودانية مع تفاصيل أكثر -->
-    <div id="sudanese-books" class="section">
-        <button class="back-btn" onclick="goHome()">الرئيسية ⬅</button>
-        <div class="clear"></div>
-        <h2>حزمة الروايات السودانية</h2>
-        <p class="subtitle">اختر الرواية التي تريد طلبها (السعر الموحد للحزمة: 3,000 SDG)</p>
+<main class="container">
+ <section id="library">
+  <h2 class="heading">📚 تصفح <span>المكتبة</span></h2>
+  <div class="categories" id="categories"></div>
+  <div class="search">
+   <input id="search" placeholder="ابحث عن كتاب أو رواية أو مؤلف..." oninput="renderBooks()">
+  </div>
+  <div class="books" id="books"></div>
+ </section>
 
-        <div class="book-item">
-            <div class="book-title">📖 رواية موسم الهجرة إلى الشمال</div>
-            <div class="book-author">المؤلف: الطيب صالح</div>
-            <div class="book-desc">الرواية الأشهر في الأدب العربي الحديث، تحكي قصة مصطفى سعيد في تعرجات الشرق والغرب والثقافة السودانية.</div>
-            <button class="btn-select" onclick="proceedToPayment('موسم الهجرة إلى الشمال (الطيب صالح)')">اختار هذه الرواية</button>
-        </div>
+ <section style="margin-top:45px">
+  <h2 class="heading">🎁 باقات <span>القراءة</span></h2>
+  <div class="bundles">
+   <div class="bundle">
+    <h3>🇸🇩 الأدب السوداني</h3>
+    <p>مجموعة من الأدب والروايات السودانية.</p>
+    <b>3,000 جنيه</b>
+   </div>
+   <div class="bundle">
+    <h3>👻 الغموض والتشويق</h3>
+    <p>رحلة في عالم الألغاز والأحداث المشوقة.</p>
+    <b>3,000 جنيه</b>
+   </div>
+  </div>
+ </section>
+</main>
 
-        <div class="book-item">
-            <div class="book-title">📖 رواية العُرس السوداني والأدب المحلي</div>
-            <div class="book-author">المؤلف: مختارات أبو العربي الثقافية</div>
-            <div class="book-desc">توثيق فريد للعادات والتقاليد والأعراس السودانية الأصيلة في قالب سردي ممتع ومشوق جداً.</div>
-            <button class="btn-select" onclick="proceedToPayment('العُرس السوداني والأدب المحلي')">اختار هذه الرواية</button>
-        </div>
+<footer>
+ <h2>📚 مكتبة أبو العربي</h2>
+ <p>القراءة بداية كل حكاية جميلة</p>
+ <p>© 2026 جميع الحقوق محفوظة</p>
+</footer>
 
-        <div class="book-item">
-            <div class="book-title">📖 روائع القصص السودانية المعاصرة</div>
-            <div class="book-author">المؤلف: نخبة من الأدباء السودانيين</div>
-            <div class="book-desc">مجموعة قصصية قصيرة تعكس نبض الشارع والحياة اليومية والبيئة السودانية المتنوعة.</div>
-            <button class="btn-select" onclick="proceedToPayment('روائع القصص السودانية المعاصرة')">اختار هذه الرواية</button>
-        </div>
-    </div>
-
-    <!-- قسم الدفع -->
-    <div id="payment-section" class="section">
-        <button class="back-btn" onclick="showSudaneseBooks()">الرجوع للقائمة ⬅</button>
-        <div class="clear"></div>
-        <h2>إتمام طلب الكتاب</h2>
-        <p style="font-size: 15px;">الخيار المحدد: <br><b id="selected-book-name" style="color: #e74c3c; font-size: 17px;"></b></p>
-        <p style="font-size: 16px; color: #27ae60; font-weight: bold;">المبلغ المطلوب: 3,000 SDG فقط</p>
-
-        <div class="bank-box">
-            <h3>💳 تفاصيل التحويل عبر (بنكك - Bankak):</h3>
-            <p><strong>اسم المستفيد:</strong> احمد جاه الرسول</p>
-            <p><strong>رقم الحساب:</strong> 9883587</p>
-            <p style="font-size: 12px; color: #555; margin-top: 8px;">ملاحظة: بعد إتمام التحويل من تطبيقك، اضغط أدناه لإرسال الإيصال عبر الواتساب واستلام كتابك فوراً.</p>
-        </div>
-
-        <a id="whatsapp-link" class="btn-whatsapp" href="#" target="_blank">💬 إرسال الإيصال وطلب الكتاب عبر الواتساب</a>
-    </div>
-
+<div class="modal-bg" id="modal">
+ <div class="modal">
+  <button class="close" onclick="closeCart()">✕ إغلاق</button>
+  <h2>🛒 سلة مشترياتك</h2>
+  <div id="cartItems"></div>
+  <h3>الإجمالي: <span id="total">0</span> جنيه</h3>
+  <div class="bank">
+   <b>💳 التحويل عبر بنكك</b><br>
+   المستفيد: أحمد جاه الرسول<br>
+   رقم الحساب: 9883587<br>
+   <small>بعد التحويل أرسل الإيصال لتأكيد الطلب.</small>
+  </div>
+  <a id="send" class="whatsapp" href="#" target="_blank" rel="noopener">إرسال الطلب عبر واتساب</a>
+ </div>
 </div>
 
 <script>
-    function showSudaneseBooks() {
-        document.getElementById('home-section').classList.remove('active');
-        document.getElementById('payment-section').classList.remove('active');
-        document.getElementById('sudanese-books').classList.add('active');
-        window.scrollTo(0, 0);
-    }
+const WHATSAPP = "249921234567"; // تم إضافة رقم الواتساب الخاص بك هنا
 
-    function goHome() {
-        document.getElementById('sudanese-books').classList.remove('active');
-        document.getElementById('payment-section').classList.remove('active');
-        document.getElementById('home-section').classList.add('active');
-        window.scrollTo(0, 0);
-    }
+const categories = [
+ "الكل","روايات سودانية","روايات عربية",
+ "روايات عالمية","غموض ورعب","تاريخ وثقافة",
+ "كتب إسلامية","علوم ومعرفة"
+];
 
-    function proceedToPayment(bookName) {
-        document.getElementById('sudanese-books').classList.remove('active');
-        document.getElementById('payment-section').classList.add('active');
-        document.getElementById('selected-book-name').innerText = bookName;
-        window.scrollTo(0, 0);
-        
-        let msg = encodeURIComponent(`السلام عليكم، أود شراء (${bookName}) بسعر 3,000 جنيه، وقمت بالتحويل عبر تطبيق بنكك إلى حساب (احمد جاه الرسول - رقم الحساب: 9883587). وهذا هو إيصال التحويل:`);
-        document.getElementById('whatsapp-link').href = `https://wa.me/249YOURNUMBER?text=${msg}`;
-    }
-</script>
+const booksData = [
+ ["موسم الهجرة إلى الشمال","الطيب صالح","روايات سودانية","من أشهر الأعمال الأدبية السودانية."],
+ ["عرس الزين","الطيب صالح","روايات سودانية","رواية من أجواء القرية السودانية."],
+ ["بندر شاه","الطيب صالح","روايات سودانية","من الأعمال الأدبية السودانية."],
+ ["شوق الدرويش","حمور زيادة","روايات سودانية","رواية تاريخية سودانية."],
+ ["الجنقو مسامير الأرض","عبد العزيز بركة ساكن","روايات سودانية","من الأدب السوداني المعاصر."],
+ ["صائد اليرقات","أمير تاج السر","روايات سودانية","رواية سودانية معاصرة."],
+ ["رجال في الشمس","غسان كنفاني","روايات عربية","رواية عربية شهيرة."],
+ ["اللص والكلاب","نجيب محفوظ","روايات عربية","من الأدب العربي الحديث."],
+ ["الثلاثية","نجيب محفوظ","روايات عربية","عمل أدبي من أشهر الروايات العربية."],
+ ["مئة عام من العزلة","غابرييل غارسيا ماركيز","روايات عالمية","من الروايات العالمية الشهيرة."],
+ ["دون كيشوت","ميغيل دي ثيربانتس","روايات عالمية","من كلاسيكيات الأدب العالمي."],
+ ["الجريمة والعقاب","فيودور دوستويفسكي","غموض ورعب","رواية نفسية وفلسفية."],
+ ["ألف ليلة وليلة","مؤلفون مجهولون","روايات عربية","حكايات تراثية عربية."],
+ ["كليلة ودمنة","ابن المقفع","تاريخ وثقافة","حكايات أدبية تراثية."],
+ ["المقدمة","ابن خلدون","تاريخ وثقافة","من أشهر كتب الفكر والتاريخ."],
+ ["الأيام","طه حسين","تاريخ وثقافة","سيرة أدبية عربية."],
+ ["حي بن يقظان","ابن طفيل","علوم ومعرفة","عمل فلسفي تراثي."],
+ ["الأربعون النووية","الإمام النووي","كتب إسلامية","مجموعة أحاديث نبوية."],
+ ["رياض الصالحين","الإمام النووي","كتب إسلامية","كتاب في الحديث والآداب."],
+ ["العادات الذرية","جيمس كلير","علوم ومعرفة","كتاب في تطوير العادات."]
+];
 
-</body>
-</html>
+const catalog = booksData.map((b,i)=>({
+ id:i+1,title:b[0],author:b[1],category:b[2],
+ desc:b[3],price:1000,
+ fileUrl:"",
+ licensed:false
+}));
+
+let selected="الكل";
+let cart=[];
+
+function renderCategories(){
+ document.getElementById("categories").innerHTML=categories.map(c=>
+ `<button class="cat ${selected===c?'active':''}" onclick="chooseCategory('${c
+    
